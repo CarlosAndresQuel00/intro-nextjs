@@ -18,9 +18,10 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Tener iniciado para editar{' '}
           <code className={styles.code}>pages/index.js</code>
         </p>
+        <p>Esta es la nueva funcionalidad.</p>
         <p>Este es mi index.</p>
         <p>Ir a <Link href="/hola"><a className="">hola</a></Link> con link</p>
       </main>
