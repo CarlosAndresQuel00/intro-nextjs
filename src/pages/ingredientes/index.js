@@ -1,6 +1,7 @@
 import api from "../../api";
 import Link from "next/link";
-import Image from "next/image";
+import PropTypes from "prop-types"; // ES6
+// import Image from "next/image";
 // import styles from "../../styles/Ingredients.module.css"; Relative routes
 import styles from "@/styles/Ingredients.module.css";
 
@@ -23,14 +24,18 @@ const IngredientsPage = ({ ingredients }) => {
     <div className={styles.ingredients}>
       {ingredients.map((ingredient) => (
         <div key={ingredient.id} className={styles.ingredient}>
-          <Image src={ingredient.image} width={400} height={300} />
+          {/*<Image src={ingredient.image} width={400} height={300} />*/}
           <div className={styles.ingredientInfo}>
             <span>
               <Link href={`/ingredientes/${ingredient.id}`}>
-                {ingredient.name}
+                <a>Título: {ingredient.title}</a>
               </Link>
+              {/*<Link href={`/ingredientes/${ingredient.id}`}>
+                Nombre: {ingredient.name}
+              </Link>*/}
             </span>
-            <span>{ingredient.cost}</span>
+            <span>Usuario: {ingredient.user}</span>
+            {/*<span>{ingredient.cost}</span>*/}
           </div>
         </div>
       ))}
@@ -38,16 +43,24 @@ const IngredientsPage = ({ ingredients }) => {
   );
 };
 
+IngredientsPage.propTypes = {
+  ingredients: PropTypes.array,
+};
+
 export default IngredientsPage;
 
 // Public route
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   let ingredients = [];
   try {
-    const response = await api.get("/ingredients");
+    const response = await api.get("/articles");
+    //const response = await api.get("/ingredients");
     console.log("response", response.data);
+    // ingredients = response.data;
     ingredients = response.data.data;
-  } catch (e) {}
+  } catch (e) {
+    console.log("e", e);
+  }
 
   return {
     props: {
