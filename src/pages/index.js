@@ -2,6 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
+// import styled from "styled-components";
+import { Title, Subtitle } from "@/styles/home";
 
 export default function Home() {
   return (
@@ -13,9 +15,9 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <Subtitle>
           Bienvenido a <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        </Subtitle>
 
         <p className={styles.description}>
           Get started by editing{" "}
@@ -30,19 +32,14 @@ export default function Home() {
           con link
         </p>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }
+
+// const Title = styled.h1`
+//   margin: 0;
+//   line-height: 1.15;
+//   font-size: 4rem;
+//   color: #f50554;
+//   text-align: center;
+// `;

@@ -10,7 +10,7 @@ const fetcher = (url) =>
     .get(url, {
       headers: {
         Authorization:
-          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9yZWdpc3RlciIsImlhdCI6MTYzMDcwNDc1NCwiZXhwIjoxNjMwNzA4MzU0LCJuYmYiOjE2MzA3MDQ3NTQsImp0aSI6IndQUTUxeXpMYkxKa0FRVXYiLCJzdWIiOjEyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.GHKUOCQktjoWwwQDN9eYPPX-qITh_GXsS_3wE4ssmm0", // Pending, client-side
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYzMjA5Nzg2MywiZXhwIjoxNjMyMTAxNDYzLCJuYmYiOjE2MzIwOTc4NjMsImp0aSI6IldRc0RtNE55UGI3SkhkRUQiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.eICSHzwk8apWa93Mu2T47xI7eNjGd8VTnzcQGHJCqbk", // Pending, client-side
       },
     })
     .then((res) => res.data);

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import spider from "../../public/images/SPIDER-MEN.png";
 import Head from "next/head";
+import styles from "@/styles/Home.module.css";
 
 const HolaPage = () => {
   return (
@@ -9,7 +10,7 @@ const HolaPage = () => {
       <Head>
         <title>Hola</title>
       </Head>
-      <div>
+      <div className={styles.main}>
         <p>Hola Mundo!</p>
         <p>
           Regresar a{" "}

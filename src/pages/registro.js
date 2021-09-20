@@ -2,9 +2,12 @@ import { useForm, Controller } from "react-hook-form";
 import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import User from "../api/user";
+// import User from "../api/user";
 import { Button, TextField, Link as MuiLink } from "@material-ui/core";
 import Link from "next/link";
+import { useAuth } from "@/contexts/auth";
+import withoutAuth from "../hocs/withoutAuth";
+import styles from "@/styles/Home.module.css";
 
 const schema = yup.object().shape({
   name: yup.string().required("Este campo es obligatorio"),
@@ -30,7 +33,7 @@ const RegisterPage = () => {
     handleSubmit,
     watch,
     formState: { errors },
-    reset,
+    //reset,
     control,
   } = useForm({
     resolver: yupResolver(schema),
@@ -38,20 +41,29 @@ const RegisterPage = () => {
   const [result, setResult] = useState("");
   const [errorsList, setErrorsList] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
+  const { register } = useAuth();
 
   const onSubmit = async (formData) => {
+    console.log("formData", formData);
     setUserInfo(null); // Clean the info
     setResult("Enviando los datos...");
     try {
       //formData.role = 'ROLE_USER';
       const userData = {
         ...formData,
-        role: "ROLE_USER",
+        role: "ROLE_USER", // Use from dynamic route to select if it's finca or acopio
       };
-      const response = await User.register(userData);
+      const response = await register(userData);
       setUserInfo(response.data);
       setResult("Usuario registrado correctamente");
-      reset();
+      // reset({
+      // ingredientDescription: "",
+      // ingredientType: "None",
+      // cost: "",
+      // name: "",
+      // RadioGroup: "",
+      // quantity: "",
+      // });
     } catch (e) {
       console.log("e", e.response);
       const { response } = e;
@@ -96,7 +108,7 @@ const RegisterPage = () => {
   console.log(watch("example")); // watch input value by passing the name of it
 
   return (
-    <div>
+    <div className={styles.main}>
       <div>
         <p>
           ¿Ya tienes una cuenta?{" "}
@@ -266,4 +278,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default withoutAuth(RegisterPage);
