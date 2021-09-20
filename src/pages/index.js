@@ -1,9 +1,10 @@
 import Head from "next/head";
-import Image from "next/image";
+//import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
 // import styled from "styled-components";
-import { Title, Subtitle } from "@/styles/home";
+// import { Title, Subtitle } from "@/styles/home";
+import { Subtitle } from "@/styles/home";
 
 export default function Home() {
   return (
